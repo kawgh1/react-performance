@@ -1,5 +1,8 @@
 # React Performance notes
 
+-   These notes deal primarily with this repo, but are general for all react applications
+-   https://github.com/kawgh1/react-crown-clothing-optimized
+
 -   ## Dont optimize your code until you've actually measured it's performance otherwise you're shooting in the dark
     -   Not all optimizations improve load speed
 -   ## Code Splitting and Chunking / Bundling
@@ -20,7 +23,9 @@
 -   ## Error Handling and Error Boundaries
 
     -   Using React Suspense and Lazy Loading means we need to pay extra attention to error handling. Suspense and Lazy Loading don't know how to handle errors gracefully and can result in a page or component getting stuck in a perpetual "Loading Screen" with no resolution and no indication to the user an error has occurred.
-    -   An **Error Boundary** is a custom fallback **Class** component that is called when an error occurs, Suspense will know to look for this Error Boundary component if it exists and we tell it how to handle accordingly
+    -   An **Error Boundary** is a custom fallback **Class** component that is called when an error occurs inside any page nest inside Suspense tags, Suspense will know to look for this Error Boundary component if it exists and we tell it how to handle accordingly
+    -   https://reactjs.org/docs/error-boundaries.html
+    -   https://www.kapwing.com/404-illustrations
 
             <Header />
                 <Switch>
@@ -41,3 +46,12 @@
                         </Suspense>
                     </ErrorBoundary>
                 </Switch>
+
+-   ## Using React Dev Tools on Chrome
+    -   Use Profiler tab to record a click through of a page or sequence and it will show you the load time for each component rendered, how many re-renders, etc.
+    -   consider React.memo() on components to prevent unnecessary re-rendering using memoization
+    -   https://reactjs.org/docs/react-api.html#reactmemo
+    -   https://reactjs.org/docs/react-api.html#reactpurecomponent
+    -   https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en
+    -   ## NOTE
+        -   **If you're using a Class Component use React PureComponent. If you're using a Functional Component, use React.memo()**
