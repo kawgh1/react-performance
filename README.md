@@ -5,6 +5,7 @@
 
 -   ## Dont optimize your code until you've actually measured it's performance otherwise you're shooting in the dark
     -   Not all optimizations improve load speed
+    -   Some optimizations can actually make loading slower and/or add more code complexity than an insignificant improvement is worth
 -   ## Code Splitting and Chunking / Bundling
 
     -   When we load the homepage, we don't want to load every page, every resource. We just want to load what the homepage requires to display.
@@ -46,6 +47,8 @@
                         </Suspense>
                     </ErrorBoundary>
                 </Switch>
+
+    ![error-boundary](https://raw.githubusercontent.com/kawgh1/react-performance/master/error-boundary-example.png)
 
 -   ## Using React Dev Tools on Chrome
     -   Use Profiler tab to record a click through of a page or sequence and it will show you the load time for each component rendered, how many re-renders, etc.
