@@ -74,8 +74,10 @@
             -   `export default React.memo(CartItem);`
     -   Can also memoize individual functions using the `Callback()` hook
 
-                const logName = useCallback(() => console.log('this function only renders once and is simply recalled
-                                                from memory on any later broader state re-renders'), [])
+            const logName = useCallback(() =>
+                console.log('this function only renders once and is simply recalled
+                from memory on any later broader state re-renders'),
+            [])
 
         -   `Callback()` takes the function to be memoized as its first parameter and an array of any dependencies as the second
             -   It will only re-render if the dependent variables of the function change from state to state, rather than on every state change
@@ -86,5 +88,5 @@
 
                 const doSomethingComplicated = useMemo(() => {
                     console.log('something complex');
-                    return((count1 _ 1000) % 12.4) _ 72123 -4827
+                    return((count1 - 1000) % 12.4) - 72123 -4827
                 }, [count1]);
