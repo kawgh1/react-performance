@@ -73,9 +73,13 @@
         -   We fix this by simply memoizing the Cart Item Component like so:
             -   `export default React.memo(CartItem);`
     -   Can also memoize individual functions using the `Callback()` hook
-        -   const logName = useCallback(() => console.log('this function only renders once and is simply recalled from memory on any later broader state re-renders'), [])
+
+                const logName = useCallback(() => console.log('this function only renders once and is simply recalled
+                                                from memory on any later broader state re-renders'), [])
+
         -   `Callback()` takes the function to be memoized as its first parameter and an array of any dependencies as the second
             -   It will only re-render if the dependent variables of the function change from state to state, rather than on every state change
+
     -   `useMemo()` is a similar memoization hook
 
         -   We use `Callback()` when we want a memoized function and we use `useMemo()` when we want a memoized value - for example, a value that is computationally expensive to generate (heavy load on the browser) - rather than re-computing the value on each re-render, `useMemo()` will simply recall the memory cached value of the last computation render, if no dependency variables have changed
