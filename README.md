@@ -1,7 +1,7 @@
 # React Performance notes
 
 -   These notes deal primarily with this repo, but are general for all react applications
--   https://github.com/kawgh1/react-crown-clothing-optimized
+    -   https://github.com/kawgh1/react-crown-clothing-optimized
 -   Additional React Performance Cheat Sheet:
 
     -   https://houssein.me/progressive-react
