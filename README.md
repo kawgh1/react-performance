@@ -2,6 +2,13 @@
 
 -   These notes deal primarily with this repo, but are general for all react applications
 -   https://github.com/kawgh1/react-crown-clothing-optimized
+-   Additional React Performance Cheat Sheet:
+
+    -   https://houssein.me/progressive-react
+
+-   Common React Interview Questions:
+
+    -   https://github.com/sudheerj/reactjs-interview-questions
 
 -   ## Dont optimize your code until you've actually measured it's performance otherwise you're shooting in the dark
     -   Not all optimizations improve load speed
@@ -95,13 +102,18 @@
 
     -   Heroku and other web hosts do not automatically zip the files hosts on their sites, even if they are uploaded to the host as zipped
         -   **Can check in the Dev Tools Network tab, chunks are not zipped automatically**
-    -   In order to make sure they are deployed as zipped, we need to add some code to our Express server.js file
+    -   In order to make sure they are deployed as zipped, we need to add some code to our Express `server.js` file
 
         -   **npm install compression**
         -   Simply add:
 
                 const compression = require('compression');
                 ...
+                ...
                 app.use(compression())
 
         -   That's it, now our chunks and files (except images, media) are zipped on deployment
+
+-   ## React Profiler API
+    -   code you add to components that can give a deeper dive to component performance and loading at the gritty level viewable in Dev Tools
+    -   https://reactjs.org/docs/profiler.html#usage
