@@ -67,7 +67,7 @@
 -   ## React Performance with Redux
 
     -   Since we are using Redux and Reselect in our application, alot of our components get their props not from their parent components, but through Redux and the Connect Higher Order Component (HOC) Pattern we are using.
-    -   Because a lot of our prop derivation is decided by `MapStateToProps` and Reselect `createSelector` and this means a lot of our props are already memoized \*\*meaning that unless the actual props coming into our Selectors have changed, we will not actually get new props, meaning our components will not rerender.\*\* This is an out of the box improvement over native React because we are using the right Redux libraries to optimize our code
+    -   Because a lot of our prop derivation is decided by `MapStateToProps` and Reselect `createSelector` and this means a lot of our props are already memoized **meaning that unless the actual props coming into our Selectors have changed, we will not actually get new props, meaning our components will not rerender.** This is an out of the box improvement over native React because we are using the right Redux libraries to optimize our code
     -   Since this is the case, just by using `MapStateToProps` and Reselect, a lot of optimization has already been done for us and we should only look at optimizing code further where an actual slow down is occurring.
     -   One example of a place we can optimize is when adding items to cart, our cart component is re-rendering **every** cart item every time a new cart item is added. This was discovered used the React Dev Tools Profiler and adding items to the cart, reviewing the output.
         -   We fix this by simply memoizing the Cart Item Component like so:
