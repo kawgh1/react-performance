@@ -65,7 +65,22 @@
     -   https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en
 
 -   ## React Performance with Redux
+
     -   Since we are using Redux and Reselect in our application, alot of our components get their props not from their parent components, but through Redux and the Connect Higher Order Component (HOC) Pattern we are using.
     -   Because a lot of our prop derivation is decided by `MapStateToProps` and Reselect `createSelector` and this means a lot of our props are already memoized \*\*meaning that unless the actual props coming into our Selectors have changed, we will not actually get new props, meaning our components will not rerender.\*\* This is an out of the box improvement over native React because we are using the right Redux libraries to optimize our code
     -   Since this is the case, just by using `MapStateToProps` and Reselect, a lot of optimization has already been done for us and we should only look at optimizing code further where an actual slow down is occurring.
     -   One example of a place we can optimize is when adding items to cart, our cart component is re-rendering **every** cart item every time a new cart item is added. This was discovered used the React Dev Tools Profiler and adding items to the cart, reviewing the output.
+        -   We fix this by simply memoizing the Cart Item Component like so:
+            -   `export default React.memo(CartItem);`
+    -   Can also memoize individual functions using the `Callback()` hook
+        -   const logName = useCallback(() => console.log('this function only renders once and is simply recalled from memory on any later broader state re-renders'), [])
+        -   `Callback()` takes the function to be memoized as its first parameter and an array of any dependencies as the second
+            -   It will only re-render if the dependent variables of the function change from state to state, rather than on every state change
+    -   `useMemo()` is a similar memoization hook
+
+        -   We use `Callback()` when we want a memoized function and we use `useMemo()` when we want a memoized value - for example, a value that is computationally expensive to generate (heavy load on the browser) - rather than re-computing the value on each re-render, `useMemo()` will simply recall the memory cached value of the last computation render, if no dependency variables have changed
+
+                const doSomethingComplicated = useMemo(() => {
+                    console.log('something complex');
+                    return((count1 _ 1000) % 12.4) _ 72123 -4827
+                }, [count1]);
