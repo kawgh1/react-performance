@@ -90,3 +90,18 @@
                     console.log('something complex');
                     return((count1 - 1000) % 12.4) - 72123 -4827
                 }, [count1]);
+
+-   ## Gzip and Compression
+
+    -   Heroku and other web hosts do not automatically zip the files hosts on their sites, even if they are uploaded to the host as zipped
+        -   **Can check in the Dev Tools Network tab, chunks are not zipped automatically**
+    -   In order to make sure they are deployed as zipped, we need to add some code to our Express server.js file
+
+        -   **npm install compression**
+        -   Simply add:
+
+                const compression = require('compression');
+                ...
+                app.use(compression())
+
+        -   That's it, now our chunks and files (except images, media) are zipped on deployment
